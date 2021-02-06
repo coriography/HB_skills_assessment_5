@@ -17,6 +17,10 @@ class Human(db.Model):
     email = db.Column(db.String(100), nullable=False)
     # animals: a list of Animal objects associated with Human
 
+    def __repr__(self):
+        """Display info about Human."""
+        return f'<Human id={self.human_id} email={self.email}'
+
 class Animal(db.Model):
     """Data model for an animal."""
 
@@ -27,6 +31,10 @@ class Animal(db.Model):
     name = db.Column(db.String(50), nullable=False)
     animal_species = db.Column(db.String(25), nullable=False)
     birth_year = db.Column(db.Integer)
+
+    def __repr__(self):
+        """Display info about Animal."""
+        return f'<Animal id={self.animal_id} animal_species={self.animal_species}'
 
 
 def connect_to_db(app):
