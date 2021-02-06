@@ -11,9 +11,21 @@ db = SQLAlchemy()
 class Human(db.Model):
     """Data model for a human."""
 
+    human_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    fname = db.Column(db.String(25), nullable=False)
+    lname = db.Column(db.String(25), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
 
 class Animal(db.Model):
     """Data model for an animal."""
+
+    # foreign keys???
+
+    animal_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    human_id = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    animal_species = db.Column(db.String(25), nullable=False)
+    birth_year = db.Column(db.Integer)
 
 
 def connect_to_db(app):
