@@ -9,6 +9,8 @@ from model import db, Human, Animal
 
 def get_human_2():
     """Return the human with the id 2."""
+    
+    return Human.query.get(2)
 
 
 def get_first_fish():
