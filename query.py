@@ -93,19 +93,6 @@ def find_humans_by_animal_species(species):
     # cat = find_humans_by_animal_species('cat')
 
 
-    # directory = db.session.query(Animal, Human).join(Human).all()
-    # either/or?
-    # directory = Animal.query.options(db.joinedload('human')).all()
-
-    # species = animal_species
-    # humans = []
-
-    # if species in human_id:
-    #     humans.append(human_id)
-
-    # return humans
-
-
 
 
 if __name__ == '__main__':
