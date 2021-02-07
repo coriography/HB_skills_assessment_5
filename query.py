@@ -16,7 +16,7 @@ def get_human_2():
 def get_first_fish():
     """Return the FIRST animal with the species 'fish'."""
 
-    # return Animal.query.filter(Animal.animal_species == 'fish').one()
+    return Animal.query.filter(Animal.animal_species == 'fish').first()
 
 
 def get_young_animals():
@@ -43,7 +43,7 @@ def get_null_bdays():
 def get_fish_or_rabbits():
     """Return all animals whose species is 'fish' OR 'rabbit'."""
 
-    # return Animal.query.filter((Animal.animal_species == 'fish') | (Animal.animal_species == 'rabbit')).all()
+    return Animal.query.filter((Animal.animal_species == 'fish') | (Animal.animal_species == 'rabbit')).all()
 
 
 def print_directory():
@@ -62,10 +62,12 @@ def print_directory():
     SQLAlchemy relationship to retrieve additional information)
     """
 
-    # humans = Human.query.all()
+    humans = Human.query.options(db.joinedload('animals')).all()
 
-    # for 
-    # return humans.
+    for human in humans:
+        print(f'{human.fname} {human.lname}') 
+        for animal in human.animals:
+            print(f'- {animal.name} ({animal.animal_species})')
 
 
 def find_humans_by_animal_species(species):
@@ -79,6 +81,16 @@ def find_humans_by_animal_species(species):
     relationship! Also, you can pursue uniqueness in a Pythonic way --- you
     don't have to do it with pure SQLAlchemy)
     """
+
+    # humans = db.session.query(Human, Animal.animal_species).join(Animal).group_by(Human.human_id, Human.email, Animal.animal_species)
+    # # Human.query.options(db.joinedload('animals')).filter(Human.animals.species == species).all()
+    # # db.session.query(Human).filter(Human.animals.species == species)
+    # # Human.query.filter(Human.animals.species == species).all()
+    # # .group_by('email', 'human_id')
+    # for human in humans:
+    #     print(human.animals.species)
+
+    # cat = find_humans_by_animal_species('cat')
 
 
 if __name__ == '__main__':
