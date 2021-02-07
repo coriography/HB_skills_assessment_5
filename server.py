@@ -22,7 +22,7 @@ def homepage():
 @app.route('/api/human/<int:human_id>')
 def get_human(human_id):
     """Return a human from the database as JSON."""
-
+    
     human = Human.query.get(human_id)
 
     if human:
