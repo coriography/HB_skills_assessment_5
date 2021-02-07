@@ -16,7 +16,7 @@ def get_human_2():
 def get_first_fish():
     """Return the FIRST animal with the species 'fish'."""
 
-    # return Animal.query.filter_by(species='fish').one()
+    # return Animal.query.filter(Animal.animal_species == 'fish').one()
 
 
 def get_young_animals():
@@ -43,7 +43,7 @@ def get_null_bdays():
 def get_fish_or_rabbits():
     """Return all animals whose species is 'fish' OR 'rabbit'."""
 
-    return Animal.query.filter((Animal.species == 'fish') | (Animal.species == 'rabbit'))
+    # return Animal.query.filter((Animal.animal_species == 'fish') | (Animal.animal_species == 'rabbit')).all()
 
 
 def print_directory():
@@ -61,6 +61,11 @@ def print_directory():
     You may only use ONE query to retrieve initial data. (Hint: leverage a
     SQLAlchemy relationship to retrieve additional information)
     """
+
+    # humans = Human.query.all()
+
+    # for 
+    # return humans.
 
 
 def find_humans_by_animal_species(species):
