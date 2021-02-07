@@ -16,6 +16,8 @@ def get_human_2():
 def get_first_fish():
     """Return the FIRST animal with the species 'fish'."""
 
+    # return Animal.query.filter_by(species='fish').one()
+
 
 def get_young_animals():
     """Return all animals that were born after 2015.
@@ -23,17 +25,25 @@ def get_young_animals():
     Do NOT include animals without birth years.
     """
 
+    return Animal.query.filter(Animal.birth_year > 2015).all()
+
 
 def get_j_names():
     """Return the humans with first names that start with 'J'."""
+
+    return Human.query.filter(Human.fname.like('J%')).all()
 
 
 def get_null_bdays():
     """Return all animals whose birth years are NULL."""
 
+    return Animal.query.filter(Animal.birth_year == None).all()
+
 
 def get_fish_or_rabbits():
     """Return all animals whose species is 'fish' OR 'rabbit'."""
+
+    return Animal.query.filter((Animal.species == 'fish') | (Animal.species == 'rabbit'))
 
 
 def print_directory():

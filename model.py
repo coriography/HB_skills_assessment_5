@@ -32,14 +32,14 @@ class Animal(db.Model):
     animal_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     human_id = db.Column(db.Integer, db.ForeignKey('humans.human_id'))
     name = db.Column(db.String(50), nullable=False)
-    animal_species = db.Column(db.String(25), nullable=False)
+    species = db.Column(db.String(25), nullable=False)
     birth_year = db.Column(db.Integer)
 
     human = db.relationship('Human', backref='animals')
 
     def __repr__(self):
         """Display info about Animal."""
-        return f'<Animal id={self.animal_id} animal_species={self.animal_species}'
+        return f'<Animal id={self.animal_id} animal_species={self.species}'
 
 
 def connect_to_db(app):
